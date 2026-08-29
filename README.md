@@ -28,7 +28,7 @@ That background shows up in how I work. Operations teaches you that a system nob
 
 Two pipelines built against the same public API, using deliberately opposite architectures. Together they're an argument about *when* each pattern is the right one.
 
-### 🔵 [FPL ELT Pipeline — S3, Snowflake and dbt](https://github.com/martinsnnadi/fpl-elt-snowflake-dbt)
+### 🔵 [FPL ELT Pipeline — S3, Snowflake and dbt](https://github.com/martinsnnadi/de-fpl-elt-snowflake-dbt)
 
 Raw JSON lands in S3. Snowflake reads it in place through external tables, with no copy. dbt builds Bronze → Silver → Gold, ending in a tested star schema of four dimensions and two facts.
 
@@ -36,7 +36,7 @@ Python performs no transformation whatsoever — the entire modelling layer is v
 
 `Snowflake` `dbt` `S3` `Airflow` `Cosmos` `medallion architecture` `star schema`
 
-### 🟢 [FPL ETL Pipeline — Airflow, S3 and Postgres](https://github.com/martinsnnadi/fpl-etl-airflow-postgres)
+### 🟢 [FPL ETL Pipeline — Airflow, S3 and Postgres](https://github.com/martinsnnadi/de-fpl-etl-airflow-postgres)
 
 The same source, transformed in pandas before it reaches the warehouse, then written to two destinations: Parquet in the data lake and query-ready tables in Postgres.
 
