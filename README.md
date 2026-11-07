@@ -25,7 +25,7 @@ That background shows up in how I work. Operations teaches you that a system nob
 
 ## Featured projects
 
-Two pipelines built against the same public API, using deliberately opposite architectures. Together they're an argument about *when* each pattern is the right one.
+Two production repositories utilizing distinct engine paradigms to process data. Together they demonstrate when to deploy cloud-based ELT warehouses versus local-first, serverless architectures with integrated human curation gates.
 
 ### 🔵 [hcai-duckdb-research-platform](https://github.com/martinsnnadi/hcai-duckdb-research-platform)
 
