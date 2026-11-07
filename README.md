@@ -4,7 +4,7 @@
 
 I build data pipelines that survive contact with reality — the messy responses, the schema that changes without warning, the run that fails at 3am and has to recover on its own.
 
-Currently a Data Engineering Intern on a Human-Centred AI research initiative, working across Azure Fabric, AWS and Snowflake. Before this, I spent nine years in oilfield operations, most recently as an Operations Manager, where I started building the reporting and analysis pipelines that eventually became the whole job.
+Currently a Data Engineering Intern on a Human-Centred AI research initiative, designing local-first, serverless data architectures using DuckDB and dbt Core. Before this, I spent nine years in oilfield operations, most recently as an Operations Manager, where I started building the reporting and analysis pipelines that eventually became the whole job.
 
 That background shows up in how I work. Operations teaches you that a system nobody can maintain isn't finished, that the failure you didn't plan for is the one you'll get, and that documentation is not optional.
 
@@ -14,19 +14,27 @@ That background shows up in how I work. Operations teaches you that a system nob
 
 ## What I work with
 
-**Languages** · Python, SQL, PySpark
-**Orchestration** · Apache Airflow, Astronomer Cosmos
-**Warehousing** · Snowflake, PostgreSQL, Delta Lake, Microsoft Fabric
-**Cloud** · AWS (S3, IAM), Microsoft Azure
-**Transformation** · dbt, pandas, Spark window functions
-**Formats & storage** · Parquet, JSON, VARIANT / semi-structured data
-**Practice** · Medallion architecture, star schemas, dimensional modelling, Git and PR-based collaboration, Docker Compose
+**Languages** · Python, SQL
+**Orchestration** · Python scripting workflow engines
+**Warehousing** · DuckDB local-first database instances, relational data warehouses
+**Transformation** · dbt Core, SQL window functions, dataset downsampling, data type-casting overrides
+**Formats & storage** · Fixed-width layout data (.dat), CSV, binary serialized python objects (.pkl), Parquet
+**Practice** · Medallion architecture, star schemas, dimensional modelling, Human-in-the-Loop (HITL) curation gates, data governance outlier sanitisation, Git and version control
 
 ---
 
 ## Featured projects
 
 Two pipelines built against the same public API, using deliberately opposite architectures. Together they're an argument about *when* each pattern is the right one.
+
+### 🔵 [hcai-duckdb-research-platform](https://github.com/martinsnnadi/hcai-duckdb-research-platform)
+
+Heterogeneous streams land on a local workstation workstation. DuckDB processes raw data into a clean medallion structure, and dbt Core builds Staging → Silver → Gold, ending in 12 distinct, research-ready marts.
+
+SQL transformations utilise complex window functions to extract longitudinal click-variance timelines, binarise clinical health phenotypes, and compute within-subject baseline Z-scores to normalise physiological sensor drift. Includes a Human-in-the-Loop (HITL) curation gate using DuckDB file scans and upstream exclusion joins to flag demographic fairness gaps, severe clinical outliers, and physical sensor dropouts.
+
+`DuckDB` `dbt Core` `Python` `medallion architecture` `Human-in-the-Loop` `Hybrid Intelligence` `Data Governance`
+
 
 ### 🔵 [FPL ELT Pipeline — S3, Snowflake and dbt](https://github.com/martinsnnadi/de-fpl-elt-snowflake-dbt)
 
@@ -36,25 +44,19 @@ Python performs no transformation whatsoever — the entire modelling layer is v
 
 `Snowflake` `dbt` `S3` `Airflow` `Cosmos` `medallion architecture` `star schema`
 
-### 🟢 [FPL ETL Pipeline — Airflow, S3 and Postgres](https://github.com/martinsnnadi/de-fpl-etl-airflow-postgres)
-
-The same source, transformed in pandas before it reaches the warehouse, then written to two destinations: Parquet in the data lake and query-ready tables in Postgres.
-
-The DAG is deliberately thin — it defines task order and nothing else. All logic sits in an importable package that unit tests exercise in milliseconds without a scheduler running. Audit columns on every table, nested columns dropped defensively, no credentials anywhere in code.
-
-`Python` `pandas` `Airflow` `PostgreSQL` `MinIO / S3` `Parquet` `pytest`
-
 ---
 
 ## Current work
 
 **Human-Centred AI Research Initiative** — Data Engineering Intern *(May 2026 – present)*
 
-- Built an Azure Fabric medallion lakehouse processing 10.6M+ OULAD clickstream records from Bronze through to Gold
-- Developed PySpark transformations using window functions to turn asynchronous interaction logs into weekly learner-behaviour features
-- Implemented column-level masking and salted SHA-256 tokenisation to protect sensitive identifiers in flight
-- Engineered an Airflow-based AWS ingestion workflow for high-frequency WESAD physiological data, using stream-unzip parsing to avoid memory bottlenecks on large archives
-- Integrated multi-year NHANES health datasets into Snowflake with dbt-based data-quality testing, applying survey weighting and explicit missing-data strategies
+- Built a local serverless medallion architecture using DuckDB and dbt Core to process over 10.6M OULAD clickstream records from raw ingestion through to 12 research-ready Gold mart tables.
+- Developed high-performance SQL window functions to transform asynchronous student logs into longitudinal weekly learner-behaviour features and click-variance indicators.
+- Implemented salted SHA-256 cryptographic masking within final database transformation schemas to permanently secure sensitive participant identifiers for Section 4 privacy compliance.
+- Engineered a free, memory-efficient Python ingestion buffer to process multi-gigabyte WESAD binary pickle files natively on disk, downsampling high-frequency streams to a stable 1Hz research standard.
+- Harmonised multi-source fixed-width NHANES datasets via a protective relational LEFT JOIN model to isolate an absolute baseline of 18,162 records while deploying automated dbt Core data-quality schema testing and missingness density ceiling gates.
+- Designed and deployed an interactive Human-in-the-Loop (HITL) curation gate using native DuckDB file loops to automatically capture and filter out demographic fairness gaps, severe clinical outliers, and physical hardware sensor dropouts.
+
 
 ---
 
